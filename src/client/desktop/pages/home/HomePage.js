@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import { connect } from "react-redux";
+import { addToFavourites } from "../../../../actions/addToFavouritesAction";
 
 const HomePage = (props) => {
+  // const [favourites, setFavrourites] = useState(0);
+  //
+  // const addToFavourites = () => {
+  //   setFavrourites(favourites + 1);
+  // };
+  console.log(props);
   return (
     <div className="container">
       <div className="productCard">
@@ -13,8 +21,12 @@ const HomePage = (props) => {
         />
         <h3>Title of the product</h3>
         <h3>Price : 15 lv </h3>
-        <a href="#" className="addToCart cart1">
-          Add to cart
+        <a
+          onClick={props.addToFavourites}
+          href="#"
+          className="addToFavourites cart1"
+        >
+          Add to favourites
         </a>
       </div>
       <div className="productCard">
@@ -27,8 +39,12 @@ const HomePage = (props) => {
         />
         <h3>Title of the product</h3>
         <h3>Price : 15 lv </h3>
-        <a href="#" className="addToCart cart1">
-          Add to cart
+        <a
+          onClick={props.addToFavourites}
+          href="#"
+          className="addToFavourites cart1"
+        >
+          Add to favourites
         </a>
       </div>
       <div className="productCard">
@@ -41,8 +57,12 @@ const HomePage = (props) => {
         />
         <h3>Title of the product</h3>
         <h3>Price : 15 lv </h3>
-        <a href="#" className="addToCart cart1">
-          Add to cart
+        <a
+          onClick={props.addToFavourites}
+          href="#"
+          className="addToFavourites cart1"
+        >
+          Add to favourites
         </a>
       </div>
       <div className="productCard">
@@ -55,12 +75,16 @@ const HomePage = (props) => {
         />
         <h3>Title of the product</h3>
         <h3>Price : 15 lv </h3>
-        <a href="#" className="addToCart cart1">
-          Add to cart
+        <a
+          onClick={props.addToFavourites}
+          href="#"
+          className="addToFavourites cart1"
+        >
+          Add to favourites
         </a>
       </div>
     </div>
   );
 };
 
-export default HomePage;
+export default connect(null, { addToFavourites })(HomePage);

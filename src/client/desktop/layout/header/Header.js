@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
+import { getFavouritesNumbers } from "../../../../actions/getFavouritesAction";
 
 const Header = (props) => {
+  useEffect(() => {
+    getFavouritesNumbers();
+  }, []);
+  let favouritesNumbers = props.favoritesProps.favouritesNumbers;
+
   return (
     <header>
       <div className="overlay" />
@@ -15,7 +24,11 @@ const Header = (props) => {
           </li>
           <li className="cart">
             <a href="#">
-              Cart<span>0</span>
+              Favorites
+              <span>
+                <FontAwesomeIcon icon={faHeart} />
+                {favouritesNumbers}
+              </span>
             </a>
           </li>
         </ul>
@@ -24,4 +37,8 @@ const Header = (props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  favoritesProps: state.favouritesState,
+});
+
+export default connect(mapStateToProps, { getFavouritesNumbers })(Header);
