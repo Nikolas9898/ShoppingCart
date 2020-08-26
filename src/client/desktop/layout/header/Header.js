@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import { getFavouritesNumbers } from "../../../../actions/getFavouritesAction";
+import { Link } from "react-router-dom";
 
 const Header = (props) => {
   useEffect(() => {
@@ -14,22 +15,24 @@ const Header = (props) => {
     <header>
       <div className="overlay" />
       <nav>
-        <h2>Shop</h2>
+        <h2>
+          <Link to="/">Shop</Link>
+        </h2>
         <ul>
           <li>
-            <a href="#">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li>
-            <a href="#">About</a>
+            <Link to="/about">About</Link>
           </li>
           <li className="cart">
-            <a href="#">
+            <Link to="/favourites">
               Favorites
               <span>
-                <FontAwesomeIcon icon={faHeart} />
+                <FontAwesomeIcon style={{ color: "red" }} icon={faHeart} />
                 {favouritesNumbers}
               </span>
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
